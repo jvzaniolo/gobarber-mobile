@@ -2,7 +2,7 @@ import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
 import Login from '../pages/Login';
-import Signup from '../pages/Signup';
+import SignUp from '../pages/SignUp';
 
 const Auth = createStackNavigator();
 
@@ -14,7 +14,7 @@ const AuthRoutes = () => (
     }}
   >
     <Auth.Screen name="Login" component={Login} />
-    <Auth.Screen name="Signup" component={Signup} />
+    <Auth.Screen name="SignUp" component={SignUp} />
   </Auth.Navigator>
 );
 
