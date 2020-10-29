@@ -28,7 +28,7 @@ interface SignUpFormData {
   password: string;
 }
 
-const SignUp = () => {
+const SignUp: React.FC = () => {
   const passwordInputRef = useRef<TextInput>(null);
   const emailInputRef = useRef<TextInput>(null);
   const formRef = useRef<FormHandles>(null);

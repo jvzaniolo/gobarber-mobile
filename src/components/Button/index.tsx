@@ -7,7 +7,7 @@ interface ButtonProps extends RectButtonProperties {
   children: string;
 }
 
-const Button = ({ children, ...rest }: ButtonProps) => {
+const Button: React.FC<ButtonProps> = ({ children, ...rest }) => {
   return (
     <Container {...rest}>
       <Text>{children}</Text>

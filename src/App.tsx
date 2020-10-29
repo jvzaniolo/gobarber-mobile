@@ -8,7 +8,7 @@ import AppProvider from './hooks';
 
 import Routes from './routes';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <NavigationContainer>
       <StatusBar barStyle="light-content" backgroundColor="#312e38" />

@@ -1,11 +1,14 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 
+import Profile from '../pages/Profile';
 import Dashboard from '../pages/Dashboard';
+import CreateAppointment from '../pages/CreateAppointment';
+import AppointmentCreated from '../pages/AppointmentCreated';
 
 const Auth = createStackNavigator();
 
-const AppRoutes = () => (
+const AppRoutes: React.FC = () => (
   <Auth.Navigator
     screenOptions={{
       headerShown: false,
@@ -13,6 +16,10 @@ const AppRoutes = () => (
     }}
   >
     <Auth.Screen name="Dashboard" component={Dashboard} />
+    <Auth.Screen name="CreateAppointment" component={CreateAppointment} />
+    <Auth.Screen name="AppointmentCreated" component={AppointmentCreated} />
+
+    <Auth.Screen name="Profile" component={Profile} />
   </Auth.Navigator>
 );
 

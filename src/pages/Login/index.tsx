@@ -34,7 +34,7 @@ interface LoginFormData {
   password: string;
 }
 
-const Login = () => {
+const Login: React.FC = () => {
   const formRef = useRef<FormHandles>(null);
   const passwordInputRef = useRef<TextInput>(null);
   const { navigate } = useNavigation();
