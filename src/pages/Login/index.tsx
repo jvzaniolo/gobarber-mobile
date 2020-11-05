@@ -1,4 +1,4 @@
-import React, { useCallback, useRef } from 'react';
+import React, { useCallback, useRef } from 'react'
 import {
   View,
   Image,
@@ -7,16 +7,16 @@ import {
   ScrollView,
   TextInput,
   Alert,
-} from 'react-native';
-import Icon from 'react-native-vector-icons/Feather';
-import { useNavigation } from '@react-navigation/native';
-import { Form } from '@unform/mobile';
-import { FormHandles } from '@unform/core';
-import * as Yup from 'yup';
+} from 'react-native'
+import Icon from 'react-native-vector-icons/Feather'
+import { useNavigation } from '@react-navigation/native'
+import { Form } from '@unform/mobile'
+import { FormHandles } from '@unform/core'
+import * as Yup from 'yup'
 
-import Input from '../../components/Input';
-import Button from '../../components/Button';
-import logoImg from '../../assets/logo.png';
+import Input from '../../components/Input'
+import Button from '../../components/Button'
+import logoImg from '../../assets/logo.png'
 
 import {
   Container,
@@ -25,58 +25,58 @@ import {
   ForgotPasswdText,
   CreateAccount,
   CreateAccText,
-} from './styles';
-import getValidationErrors from '../../utils/getValidationErrors';
-import { useAuth } from '../../hooks/auth';
+} from './styles'
+import getValidationErrors from '../../utils/getValidationErrors'
+import { useAuth } from '../../hooks/auth'
 
 interface LoginFormData {
-  email: string;
-  password: string;
+  email: string
+  password: string
 }
 
 const Login: React.FC = () => {
-  const formRef = useRef<FormHandles>(null);
-  const passwordInputRef = useRef<TextInput>(null);
-  const { navigate } = useNavigation();
+  const formRef = useRef<FormHandles>(null)
+  const passwordInputRef = useRef<TextInput>(null)
+  const { navigate } = useNavigation()
 
-  const { logIn } = useAuth();
+  const { logIn } = useAuth()
 
   const handleLogin = useCallback(async (data: LoginFormData) => {
     try {
-      formRef.current?.setErrors({});
+      formRef.current?.setErrors({})
 
       const schema = Yup.object().shape({
         email: Yup.string()
           .required('E-mail obrigatório')
           .email('Digite um e-mail válido'),
         password: Yup.string().required('Senha obrigatória'),
-      });
+      })
 
       await schema.validate(data, {
         abortEarly: false,
-      });
+      })
 
       await logIn({
         email: data.email,
         password: data.password,
-      });
+      })
     } catch (err) {
       if (err instanceof Yup.ValidationError) {
-        const errors = getValidationErrors(err);
+        const errors = getValidationErrors(err)
 
-        console.log(errors);
+        console.log(errors)
 
-        formRef.current?.setErrors(errors);
+        formRef.current?.setErrors(errors)
 
-        return;
+        return
       }
 
       Alert.alert(
         'Erro na autenticação',
         'Ocorreu um erro ao fazer login, cheque as credenciais.',
-      );
+      )
     }
-  }, []);
+  }, [])
 
   return (
     <>
@@ -110,7 +110,7 @@ const Login: React.FC = () => {
                 placeholder="E-mail"
                 returnKeyType="next"
                 onSubmitEditing={() => {
-                  passwordInputRef.current?.focus();
+                  passwordInputRef.current?.focus()
                 }}
               />
 
@@ -122,13 +122,13 @@ const Login: React.FC = () => {
                 secureTextEntry
                 returnKeyType="send"
                 onSubmitEditing={() => {
-                  formRef.current?.submitForm();
+                  formRef.current?.submitForm()
                 }}
               />
 
               <Button
                 onPress={() => {
-                  formRef.current?.submitForm();
+                  formRef.current?.submitForm()
                 }}
               >
                 Entrar
@@ -137,7 +137,7 @@ const Login: React.FC = () => {
 
             <ForgotPassword
               onPress={() => {
-                console.log('test');
+                console.log('test')
               }}
             >
               <ForgotPasswdText>Esqueci minha senha</ForgotPasswdText>
@@ -151,7 +151,7 @@ const Login: React.FC = () => {
         <CreateAccText>Criar uma conta</CreateAccText>
       </CreateAccount>
     </>
-  );
-};
+  )
+}
 
-export default Login;
+export default Login

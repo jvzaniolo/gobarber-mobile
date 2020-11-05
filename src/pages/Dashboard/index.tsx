@@ -1,9 +1,9 @@
-import { useNavigation } from '@react-navigation/native';
-import React, { useCallback, useEffect, useState } from 'react';
-import Icon from 'react-native-vector-icons/Feather';
+import { useNavigation } from '@react-navigation/native'
+import React, { useCallback, useEffect, useState } from 'react'
+import Icon from 'react-native-vector-icons/Feather'
 
-import { useAuth } from '../../hooks/auth';
-import api from '../../services/api';
+import { useAuth } from '../../hooks/auth'
+import api from '../../services/api'
 
 import {
   Container,
@@ -21,36 +21,36 @@ import {
   ProviderSchedule,
   ProviderScheduleText,
   ProvidersListTitle,
-} from './styles';
+} from './styles'
 
 export interface ProvidersProps {
-  id: string;
-  name: string;
-  avatar_url: string;
+  id: string
+  name: string
+  avatar_url: string
 }
 
 const Dashboard: React.FC = () => {
-  const [providers, setProviders] = useState<ProvidersProps[]>([]);
+  const [providers, setProviders] = useState<ProvidersProps[]>([])
 
-  const { user } = useAuth();
-  const { navigate } = useNavigation();
+  const { user } = useAuth()
+  const { navigate } = useNavigation()
 
   useEffect(() => {
     api.get('providers').then((response) => {
-      setProviders(response.data);
-    });
-  }, []);
+      setProviders(response.data)
+    })
+  }, [])
 
   const navigateToProfile = useCallback(() => {
-    navigate('Profile');
-  }, [navigate]);
+    navigate('Profile')
+  }, [navigate])
 
   const navigateToCreateAppointment = useCallback(
     (providerId) => {
-      navigate('CreateAppointment', { providerId });
+      navigate('CreateAppointment', { providerId })
     },
     [navigate],
-  );
+  )
 
   return (
     <Container>
@@ -64,8 +64,8 @@ const Dashboard: React.FC = () => {
           {user.avatar_url ? (
             <UserAvatar source={{ uri: user.avatar_url }} />
           ) : (
-            <AvatarIcon name="user" size={32} />
-          )}
+              <AvatarIcon name="user" size={32} />
+            )}
         </ProfileButton>
       </Header>
 
@@ -98,7 +98,7 @@ const Dashboard: React.FC = () => {
         )}
       />
     </Container>
-  );
-};
+  )
+}
 
-export default Dashboard;
+export default Dashboard

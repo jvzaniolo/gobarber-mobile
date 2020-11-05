@@ -1,8 +1,8 @@
-import React, { useCallback } from 'react';
-import { useRoute, useNavigation } from '@react-navigation/native';
-import Icon from 'react-native-vector-icons/Feather';
+import React, { useCallback } from 'react'
+import { useRoute, useNavigation } from '@react-navigation/native'
+import Icon from 'react-native-vector-icons/Feather'
 
-import { useAuth } from '../../hooks/auth';
+import { useAuth } from '../../hooks/auth'
 
 import {
   Container,
@@ -10,21 +10,21 @@ import {
   BackButton,
   HeaderTitle,
   UserAvatar,
-} from './styles';
+} from './styles'
 
 interface RouteProps {
-  providerId: string;
+  providerId: string
 }
 
 const CreateAppointment: React.FC = () => {
-  const { user } = useAuth();
-  const { params } = useRoute();
-  const navigation = useNavigation();
-  const { providerId } = params as RouteProps;
+  const { user } = useAuth()
+  const { params } = useRoute()
+  const navigation = useNavigation()
+  const { providerId } = params as RouteProps
 
   const navigateBack = useCallback(() => {
-    navigation.goBack();
-  }, [navigation]);
+    navigation.goBack()
+  }, [navigation])
 
   return (
     <Container>
@@ -38,7 +38,7 @@ const CreateAppointment: React.FC = () => {
         <UserAvatar source={{ uri: user.avatar_url }} />
       </Header>
     </Container>
-  );
-};
+  )
+}
 
-export default CreateAppointment;
+export default CreateAppointment

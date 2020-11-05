@@ -1,5 +1,5 @@
-import styled from 'styled-components/native';
-import { RectButton } from 'react-native-gesture-handler';
+import { RectButton } from 'react-native-gesture-handler'
+import styled from 'styled-components/native'
 
 export const Container = styled(RectButton)`
   width: 100%;
@@ -9,10 +9,10 @@ export const Container = styled(RectButton)`
 
   align-items: center;
   justify-content: center;
-`;
+`
 
 export const Text = styled.Text`
   color: #312e38;
   font-size: 18px;
   font-family: 'RobotoSlab-Medium';
-`;
+`
