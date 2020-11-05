@@ -33,6 +33,16 @@ export const UserName = styled.Text`
 
 export const ProfileButton = styled.TouchableOpacity``
 
+export const Logout = styled.TouchableOpacity`
+  margin-left: auto;
+  padding: 0 16px;
+`
+
+export const LogoutText = styled.Text`
+  font-size: 18px;
+  color: #f4ede8;
+`
+
 export const UserAvatar = styled.Image`
   width: 56px;
   height: 56px;

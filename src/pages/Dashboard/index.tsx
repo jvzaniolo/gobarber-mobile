@@ -10,6 +10,8 @@ import {
   Header,
   HeaderTitle,
   UserName,
+  Logout,
+  LogoutText,
   ProfileButton,
   UserAvatar,
   AvatarIcon,
@@ -32,7 +34,7 @@ export interface ProvidersProps {
 const Dashboard: React.FC = () => {
   const [providers, setProviders] = useState<ProvidersProps[]>([])
 
-  const { user } = useAuth()
+  const { user, logOut } = useAuth()
   const { navigate } = useNavigation()
 
   useEffect(() => {
@@ -59,7 +61,9 @@ const Dashboard: React.FC = () => {
           Bem vindo, {'\n'}
           <UserName>{user.name}</UserName>
         </HeaderTitle>
-
+        <Logout onPress={logOut}>
+          <LogoutText>Sair</LogoutText>
+        </Logout>
         <ProfileButton onPress={navigateToProfile}>
           {user.avatar_url ? (
             <UserAvatar source={{ uri: user.avatar_url }} />
