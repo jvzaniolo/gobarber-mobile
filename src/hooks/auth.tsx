@@ -31,7 +31,7 @@ interface AuthContextData {
   loading: boolean
   logIn(credentials: LogInCredentials): Promise<void>
   logOut(): void
-  updateUser(user: User): void
+  updateUser(user: User): Promise<void>
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData)
